@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @DisplayName(value = "Регистрация на тестовом стенде")
-public class thirdHomework {
+public class ThirdHomework {
 
     WebDriver driver;
 
