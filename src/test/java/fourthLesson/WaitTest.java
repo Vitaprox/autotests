@@ -66,8 +66,4 @@ public class WaitTest {
         driver.findElement(By.id("trash-btn")).click();
     }
 
-
-
-
-
 }
