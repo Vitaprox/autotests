@@ -47,6 +47,7 @@ public class HomeworkTen {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         //Создаем заметки
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'Card_containerNew')]")));
         WebElement addButton = driver.findElement(By.xpath("//div[contains(@class, 'Card_containerNew')]"));
         for (int i = 0; i < 3; i++) {
             addButton.click();
