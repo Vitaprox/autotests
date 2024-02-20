@@ -1,4 +1,4 @@
-package thirdLesson;
+package annotation3;
 import org.junit.jupiter.api.*;
 
 @DisplayName(value = "Тестовый класс с аннотациями")

@@ -1,4 +1,4 @@
-package fifthLesson;
+package asserts5;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;

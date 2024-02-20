@@ -1,4 +1,4 @@
-package lessonTwelfth;
+package modifiers12;
 
 public class News {
     protected void getNews(){

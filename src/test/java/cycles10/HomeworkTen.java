@@ -1,4 +1,4 @@
-package lessonTen;
+package cycles10;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;

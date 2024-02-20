@@ -1,4 +1,4 @@
-package thirdLesson;
+package annotation3;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;

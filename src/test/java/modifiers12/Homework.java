@@ -1,4 +1,4 @@
-package lessonTwelfth;
+package modifiers12;
 
 public class Homework {
     public static void main(String[] args) {

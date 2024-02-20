@@ -1,4 +1,4 @@
-package fourthLesson;
+package wait4;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
