@@ -30,7 +30,7 @@ public class Homework {
 
     @Test
     @DisplayName(value = "Работа с js")
-    public void task1() throws InterruptedException {
+    public void task1(){
         //Ввод логина
         driver.findElement(By.id("login-input")).sendKeys("Dtest");
         //Ввод пароля
@@ -43,10 +43,12 @@ public class Homework {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.location = 'https://www.digitalleague.ru'");
         js.executeScript("window.open('" + href + "', '_blank');");
+
+        //Переключаемся на новую страницу
         driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
+
+        //Находим самый нижний элемент и прокручиваем до него
         WebElement userResponseDto = driver.findElement(By.id("model-UserResponseDto"));
         js.executeScript("arguments[0].scrollIntoView();", userResponseDto);
-        Thread.sleep(1000);
-
     }
 }
