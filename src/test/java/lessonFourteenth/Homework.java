@@ -35,12 +35,14 @@ public class Homework {
         driver.findElement(By.id("login-input")).sendKeys("Dtest");
         //Ввод пароля
         driver.findElement(By.id("password-input")).sendKeys("Dtest");
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         //Клик по кнопке Войти
-        driver.findElement(By.id("form_auth_button")).click();
+        WebElement loginButton = driver.findElement(By.id("form_auth_button"));
+        js.executeScript("arguments[0].click();", loginButton);
 
         String href = driver.findElement(By.xpath("//a[@rel='noreferrer']")).getAttribute("href");
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.location = 'https://www.digitalleague.ru'");
         js.executeScript("window.open('" + href + "', '_blank');");
 
