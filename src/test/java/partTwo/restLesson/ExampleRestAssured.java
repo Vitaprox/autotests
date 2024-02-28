@@ -10,32 +10,24 @@ public class ExampleRestAssured {
         RestAssured.given()
                 .log().method()
                 .log().uri()
-                .get("http://172.24.120.5:8081/api/users/login_user_lesson/notes/archive")
-                .then()
-                .log().all();
-//                .andReturn()
-//                .prettyPrint();
+                .get("https://randomuser.me/")
+                .andReturn()
+                .prettyPrint();
     }
 
     @Test
-    public void createUserTest() {
-//        RestAssured.given()
-//                .get("https://randomuser.me/api/")
-//                .then().log().ifValidationFails().statusCode(400);
-        User user1 = new User.Builder()
-                .withLogin("login1")
-                .withPassword("111")
-                .build();
-
+    public void createNoteTest() {
         Note note1 = new Note.Builder()
-                .withTitle("title1")
+                .withTitle("Title1")
+                .withText("text1")
                 .build();
         Note note2 = new Note.Builder()
+                .withTitle("Title2")
                 .withText("text2")
                 .build();
         Note note3 = new Note.Builder()
                 .withTitle("Title3")
-                .withText("title3")
+                .withText("text3")
                 .build();
 
         System.out.println(note1.getTitle() + " " + note1.getText());
