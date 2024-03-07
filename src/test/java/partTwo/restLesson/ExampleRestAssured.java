@@ -1,18 +1,53 @@
 package partTwo.restLesson;
 
+import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 import io.restassured.RestAssured;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExampleRestAssured {
 
     @Test
-    public void exampleRestAssuredTest() {
+    public void task2() {
+        Map<String, String> params = new HashMap<>();
+        params.put("password", "Dtest");
+        params.put("username", "Dtest");
         RestAssured.given()
-                .log().method()
-                .log().uri()
-                .get("https://randomuser.me/")
-                .andReturn()
-                .prettyPrint();
+                .formParams(params)
+                .get("http://172.24.120.5:8081/api/login")
+                .then()
+                .statusCode(200)
+                .log().body();
+    }
+
+    @Test
+    public void task1() {
+        String login = "Dtest";
+        String name = "task";
+        String count = "1";
+
+        Map<String, String> formParams = new HashMap<>();
+        formParams.put("password", "Dtest");
+        formParams.put("username", "Dtest");
+        JsonPath response = RestAssured.given()
+                .formParams(formParams)
+                .get("http://172.24.120.5:8081/api/login")
+                .jsonPath();
+        String token = response.get("access_token");
+
+        Map<String, String> params = new HashMap<>();
+        params.put("name", name);
+        params.put("count", count);
+        RestAssured.given()
+                .log().all()
+                .header("Authorization", "Bearer " + token)
+                .queryParams(params)
+                .get("http://172.24.120.5:8081/api/users/" + login + "/notes")
+                .then()
+                .statusCode(200)
+                .log().body();
     }
 
     @Test

@@ -1,8 +1,8 @@
-package pageObject16.tests;
+package partOne.pageObject16.tests;
 
-import pageObject16.pages.AuthorizationPage;
-import pageObject16.pages.MainPage;
-import pageObject16.steps.DBSteps;
+import partOne.pageObject16.pages.AuthorizationPage;
+import partOne.pageObject16.pages.MainPage;
+import partOne.pageObject16.steps.DBSteps;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;

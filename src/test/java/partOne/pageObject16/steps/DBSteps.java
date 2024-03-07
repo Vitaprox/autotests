@@ -1,4 +1,4 @@
-package pageObject16.steps;
+package partOne.pageObject16.steps;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
