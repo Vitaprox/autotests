@@ -9,7 +9,7 @@ public class Homework {
     @Test
     public void test() {
         User newUser = new User();
-        newUser.setLogin("test_login1215521354215");
+        newUser.setLogin("test_login1264215");
         newUser.setPassword("123");
         newUser.setEmail("test@mail24.ru");
         newUser.setDefaultRole();

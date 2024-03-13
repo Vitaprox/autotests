@@ -8,7 +8,7 @@ public class Note {
     private String name;
     private String content;
     private String color;
-    private String priority;
+    private int priority;
 
 
     public static class Builder {
@@ -33,7 +33,7 @@ public class Note {
             return this;
         }
 
-        public Builder withPriority(String priority) {
+        public Builder withPriority(int priority) {
             newNote.priority = priority;
             return this;
         }
