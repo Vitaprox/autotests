@@ -6,10 +6,13 @@ import pojo.UserCreationDTO;
 import pojo.User;
 
 public class Homework {
+
+    private int random = 400 + (int) (Math.random() * 1000);
+
     @Test
     public void test() {
         User newUser = new User();
-        newUser.setLogin("test_login1264215");
+        newUser.setLogin("test_login" + random);
         newUser.setPassword("123");
         newUser.setEmail("test@mail24.ru");
         newUser.setDefaultRole();
