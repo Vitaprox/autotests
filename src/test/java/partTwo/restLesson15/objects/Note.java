@@ -5,10 +5,12 @@ import lombok.Data;
 @Data
 public class Note {
 
+    private int id;
     private String name;
     private String content;
     private String color;
     private int priority;
+    private boolean archiveFlag;
 
     public Note generateNote() {
         int numberGenerate =  100 + (int) (Math.random() * 10000);
