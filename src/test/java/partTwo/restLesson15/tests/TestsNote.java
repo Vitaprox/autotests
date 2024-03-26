@@ -1,4 +1,4 @@
-package partTwo.restLesson15.Tests;
+package partTwo.restLesson15.tests;
 
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
