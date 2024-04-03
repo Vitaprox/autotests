@@ -14,6 +14,7 @@ import partTwo.restLesson15.steps.Steps;
 import java.util.ArrayList;
 import java.util.List;
 
+@DisplayName("Проверка заметок")
 public class TestsNote {
 
     private Steps steps = new Steps();
