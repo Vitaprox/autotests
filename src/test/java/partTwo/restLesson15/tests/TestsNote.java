@@ -18,6 +18,7 @@ import java.util.List;
 public class TestsNote {
 
     private Steps steps = new Steps();
+    DBSteps db = new DBSteps();
     private ResponseSpecification responseSpecification;
     private RequestSpecification requestSpecification;
     private User newUser;
@@ -29,13 +30,12 @@ public class TestsNote {
     public void before(){
         newUser = new User().generateUser();
         newNote = new Note().generateNote();
+        db.createUserWithStandardPassword(newUser.getLogin());
     }
 
     @Test
     @DisplayName(value = "Проверка создания заметки")
     public void createNoteWithAllFields() {
-        steps.registrationWithAllFields(newUser);
-
         noteCreationDTO = NoteCreationDTO.builder()
                 .name(newNote.getName())
                 .content(newNote.getContent())
@@ -44,7 +44,6 @@ public class TestsNote {
                 .build();
         ArrayList<NoteCreationDTO> notes = new ArrayList<>();
         notes.add(noteCreationDTO);
-
         token = steps.getToken(newUser.getLogin(), newUser.getPassword());
 
         requestSpecification = steps.createRequestSpecificationCreateNote(token, newUser.getLogin(), notes);
@@ -55,10 +54,8 @@ public class TestsNote {
     @Test
     @DisplayName(value = "Проверка редактирования заметки")
     public void editNote() {
-        createNoteWithAllFields();
-
-        DBSteps db = new DBSteps();
         int userId = db.getUserId(newUser.getLogin());
+        db.addRandomNote(userId);
         int noteId = db.getLastNoteId(userId);
         int random = 100 + (int) (Math.random() * 1000);
         noteCreationDTO = NoteCreationDTO.builder()
@@ -68,6 +65,8 @@ public class TestsNote {
                 .color(newNote.getColor())
                 .priority(newNote.getPriority())
                 .build();
+
+        token = steps.getToken(newUser.getLogin(), newUser.getPassword());
 
         ArrayList<NoteCreationDTO> notes = new ArrayList<>();
         notes.add(noteCreationDTO);
@@ -80,10 +79,9 @@ public class TestsNote {
     @Test
     @DisplayName(value = "Проверка архивирования заметки")
     public void archiveNote() {
-        createNoteWithAllFields();
 
-        DBSteps db = new DBSteps();
         int userId = db.getUserId(newUser.getLogin());
+        db.addRandomNote(userId);
         int noteId = db.getLastNoteId(userId);
         List<Object> fields = db.getNoteFields(noteId);
 
@@ -95,6 +93,8 @@ public class TestsNote {
                 .priority((Integer) fields.get(3))
                 .archiveFlag(true)
                 .build();
+
+        token = steps.getToken(newUser.getLogin(), newUser.getPassword());
 
         ArrayList<NoteCreationDTO> notes = new ArrayList<>();
         notes.add(noteCreationDTO);

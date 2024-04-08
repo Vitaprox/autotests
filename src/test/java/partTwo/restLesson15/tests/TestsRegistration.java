@@ -39,7 +39,15 @@ public class TestsRegistration {
     @Test
     @DisplayName(value = "Проверка регистрации со всеми полями")
     public void registrationWithAllFieldsTest() {
-        steps.registrationWithAllFields(newUser);
+        userCreationDTO = UserCreationDTO.builder().login(newUser.getLogin())
+                .password(newUser.getPassword())
+                .email(newUser.getEmail())
+                .roles(newUser.getRoles())
+                .build();
+
+        requestSpecification = steps.createRequestSpecificationRegistration(userCreationDTO);
+        responseSpecification = steps.createResponseSpecificationRegistration(201);
+        steps.postRegistration(requestSpecification, responseSpecification);
     }
 
     @Test

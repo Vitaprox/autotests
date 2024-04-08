@@ -90,13 +90,4 @@ public class Steps {
                 .build();
     }
 
-    public void registrationWithAllFields(User newUser) {
-        UserCreationDTO userCreationDTO = UserCreationDTO.builder().login(newUser.getLogin())
-                .password(newUser.getPassword())
-                .email(newUser.getEmail())
-                .roles(newUser.getRoles())
-                .build();
-
-        postRegistration(createRequestSpecificationRegistration(userCreationDTO), createResponseSpecificationRegistration(201));
-    }
 }
