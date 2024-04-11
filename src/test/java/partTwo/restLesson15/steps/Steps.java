@@ -90,4 +90,20 @@ public class Steps {
                 .build();
     }
 
+
+    public RequestSpecification createRequestSpecificationDeleteNote(int noteId, String token, String login) {
+        return new RequestSpecBuilder()
+                .addHeader("Authorization", "Bearer " + token)
+                .setBaseUri(BASE_URI)
+                .setBasePath(PATH_NOTE_1 + login + PATH_NOTE_2 + noteId)
+                .setContentType(ContentType.JSON)
+                .build();
+    }
+
+    public void delete(RequestSpecification requestSpecification, ResponseSpecification responseSpecification) {
+        RestAssured.given(requestSpecification).log().all()
+                .delete()
+                .then().log().all().spec(responseSpecification);
+    }
+
 }

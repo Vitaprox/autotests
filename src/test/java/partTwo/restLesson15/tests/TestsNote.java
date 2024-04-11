@@ -1,5 +1,7 @@
 package partTwo.restLesson15.tests;
 
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.junit.Before;
@@ -102,5 +104,19 @@ public class TestsNote {
         requestSpecification = steps.createRequestSpecificationEditNote(token, newUser.getLogin(), notes);
         responseSpecification = steps.createResponseSpecificationRegistration(204);
         steps.putEditNote(requestSpecification, responseSpecification);
+    }
+
+    @Test
+    @DisplayName(value = "Проверка удаления заметки")
+    public void deleteNote() {
+        int userId = db.getUserId(newUser.getLogin());
+        db.addRandomNote(userId);
+        int noteId = db.getLastNoteId(userId);
+
+        token = steps.getToken(newUser.getLogin(), newUser.getPassword());
+
+        requestSpecification = steps.createRequestSpecificationDeleteNote(noteId, token, newUser.getLogin());
+        responseSpecification = steps.createResponseSpecificationRegistration(204);
+        steps.delete(requestSpecification, responseSpecification);
     }
 }
